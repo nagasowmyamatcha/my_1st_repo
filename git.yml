@@ -1,0 +1,17 @@
+---
+- name: "play 1 - trianz website configuration"
+  hosts: webservers
+  become: yes
+  tasks:
+    - name: "git"
+      yum:
+        name: "git"
+        state: present
+    - name: ensure a list of packages installed
+      yum:
+        name: "{{ packages }}"
+      vars:
+        packages:
+          - httpd
+          - httpd-tools
+            
